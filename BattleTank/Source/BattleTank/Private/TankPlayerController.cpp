@@ -42,7 +42,7 @@ void ATankPlayerController::AimTowardsCrosshair()
 
 	auto Time = GetWorld()->GetTimeSeconds();
 
-	UE_LOG(LogTemp, Warning, TEXT("%f : AimTowardsCrosshair called"), Time);
+	//UE_LOG(LogTemp, Warning, TEXT("%f : AimTowardsCrosshair called"), Time);
 
 	FVector HitLocation; //Out parameter
 	if (GetSightRayHitLocation(HitLocation)) // Has side-effect , is going to line trace
