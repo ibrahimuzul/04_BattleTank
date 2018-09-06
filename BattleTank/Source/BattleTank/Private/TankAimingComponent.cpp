@@ -58,10 +58,10 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 		StartLocation,
 		HitLocation,
 		LaunchSpeed,
-		/*false,
+		false,
 		0.f,
-		0.f,*/
-		ESuggestProjVelocityTraceOption::DoNotTrace
+		0.f
+		,ESuggestProjVelocityTraceOption::DoNotTrace // comment this line to produce bug
 		/*FCollisionResponseParams::DefaultResponseParam,
 		TArray<AActor*>(),
 		true*/
@@ -77,7 +77,7 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 
 		auto Time = GetWorld()->GetTimeSeconds();
 
-		UE_LOG(LogTemp, Warning, TEXT("%f : Aim Solution found %f"), Time);
+		UE_LOG(LogTemp, Warning, TEXT("%f : Aim Solution found"), Time);
 
 		/*UE_LOG(LogTemp, Warning, TEXT("Aiming at %s"), *AimDirection.ToString());*/
 		
