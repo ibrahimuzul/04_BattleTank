@@ -10,15 +10,9 @@ void ATankPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
 	auto AimingComponent = GetControlledTank()->FindComponentByClass<UTankAimingComponent>();
-	if (ensure(AimingComponent))
-	{
-		FoundAimingComponent(AimingComponent);
-	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Player Controller cant find aiming component at Begin Play"));
-	}
+	if (!ensure(AimingComponent)) { return; }
 
+	FoundAimingComponent(AimingComponent);
 
 }
 
@@ -26,7 +20,6 @@ void ATankPlayerController::BeginPlay()
 void ATankPlayerController::Tick(float DeltaTime) {
 	Super::Tick(DeltaTime);
 	AimTowardsCrosshair();
-	//UE_LOG(LogTemp, Warning, TEXT("Player Controller Ticking"));
 }
 
 
@@ -42,12 +35,10 @@ void ATankPlayerController::AimTowardsCrosshair()
 
 	auto Time = GetWorld()->GetTimeSeconds();
 
-	//UE_LOG(LogTemp, Warning, TEXT("%f : AimTowardsCrosshair called"), Time);
-
 	FVector HitLocation; //Out parameter
 	if (GetSightRayHitLocation(HitLocation)) // Has side-effect , is going to line trace
 	{
-		/* UE_LOG(LogTemp, Warning, TEXT("Hit location : %s"), *HitLocation.ToString());*/
+		
 
 		GetControlledTank()->AimAt(HitLocation);
 
@@ -64,7 +55,7 @@ bool ATankPlayerController::GetSightRayHitLocation(FVector& HitLocation) const
 	int32 ViewportSizeX, ViewportSizeY;
 	GetViewportSize(ViewportSizeX, ViewportSizeY);
 	auto ScreenLocation = FVector2D(ViewportSizeX * CrosshairXLocation, ViewportSizeY * CrosshairYLocation);
-	//UE_LOG(LogTemp, Warning, TEXT("ScreenLocation : %s"), *ScreenLocation.ToString());
+	
 
 	// "De-project" the screen position of the crosshair to world direction
 	FVector LookDirection;
@@ -75,7 +66,7 @@ bool ATankPlayerController::GetSightRayHitLocation(FVector& HitLocation) const
 		// GetLookVectorHitLocation();
 		GetLookVectorHitLocation(LookDirection, HitLocation);
 
-		//UE_LOG(LogTemp, Warning, TEXT("Look direction : %s"), *LookDirection.ToString());
+		
 	}
 
 
