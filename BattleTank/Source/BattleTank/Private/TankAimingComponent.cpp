@@ -5,19 +5,6 @@
 #include "TankBarrel.h"
 #include "TankTurret.h"
 
-
-//void UTankAimingComponent::SetBarrelReference(UTankBarrel* BarrelToSet)
-//{
-//	if (!BarrelToSet) { return; }
-//	Barrel = BarrelToSet;
-//}
-//
-//void UTankAimingComponent::SetTurretReference(UTankTurret* TurretToSet)
-//{
-//	if (!TurretToSet) { return; }
-//	Turret = TurretToSet;
-//}
-
 void UTankAimingComponent::Initialise(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet)
 {
 	Barrel = BarrelToSet;
@@ -33,27 +20,6 @@ UTankAimingComponent::UTankAimingComponent()
 
 	// ...
 }
-
-
-
-
-////// Called when the game starts
-////void UTankAimingComponent::BeginPlay()
-////{
-////	Super::BeginPlay();
-////
-////	// ...
-////
-////}
-////
-////
-////// Called every frame
-////void UTankAimingComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
-////{
-////	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-////
-////	// ...
-////}
 
 void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 {

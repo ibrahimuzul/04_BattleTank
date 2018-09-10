@@ -18,20 +18,8 @@ ATank::ATank()
 	UE_LOG(LogTemp, Warning, TEXT("%s DONKEY: Tank C++ Construct"), *TankName); 
 
 	// No need to protect points as added at construction
-	//TankAimingComponent = CreateDefaultSubobject<UTankAimingComponent>(FName("Aiming Component"));
-	//TankMovementComponent = CreateDefaultSubobject<UTankMovementComponent>(FName("Movement Component"));
 }
 
-//void ATank::SetBarrelReference(UTankBarrel* BarrelToSet)
-//{
-//	TankAimingComponent->SetBarrelReference(BarrelToSet);
-//	Barrel = BarrelToSet;
-//}
-//
-//void ATank::SetTurretReference(UTankTurret* TurretToSet)
-//{
-//	TankAimingComponent->SetTurretReference(TurretToSet);
-//}
 
 // Called when the game starts or when spawned
 void ATank::BeginPlay()
@@ -42,12 +30,7 @@ void ATank::BeginPlay()
 }
 
 
-//// Called to bind functionality to input
-//void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-//{
-//	Super::SetupPlayerInputComponent(PlayerInputComponent);
-//
-//}
+
 
 void ATank::AimAt(FVector HitLocation)
 {

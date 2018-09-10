@@ -19,15 +19,6 @@ void ATankPlayerController::BeginPlay()
 		UE_LOG(LogTemp, Warning, TEXT("Player Controller cant find aiming component at Begin Play"));
 	}
 
-	//auto ControlledTank = GetControlledTank();
-	//if (!ControlledTank)
-	//{
-	//	UE_LOG(LogTemp, Warning, TEXT("PlayerController not possessing a tank"));
-	//}
-	//else
-	//{
-	//	UE_LOG(LogTemp, Warning, TEXT("PlayerController possessing: %s"), *(ControlledTank->GetName()));
-	//}
 
 }
 
@@ -118,7 +109,5 @@ bool ATankPlayerController::GetLookDirection(FVector2D ScreenLocation, FVector& 
 	FVector CameraWorldLocation; // To be discarded
 
 	return DeprojectScreenPositionToWorld(ScreenLocation.X, ScreenLocation.Y, CameraWorldLocation, LookDirection);
-
-
 
 }
