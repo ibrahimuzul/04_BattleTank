@@ -26,7 +26,7 @@ void UTankMovementComponent::RequestDirectMove(const FVector& MoveVelocity, bool
 	//UE_LOG(LogTemp, Warning, TEXT("Turn Value %f"), RightThrow);
 	IntendTurnRight(RightThrow);
 
-	UE_LOG(LogTemp, Warning, TEXT("Right : %f ,  Forward : %f"), RightThrow, ForwardThrow);
+	//UE_LOG(LogTemp, Warning, TEXT("Right : %f ,  Forward : %f"), RightThrow, ForwardThrow);
 
 	/*auto TankName = GetOwner()->GetName();
 	UE_LOG(LogTemp, Warning, TEXT("%s vectoring to %s"), *TankName, *AIForwardIntention);*/

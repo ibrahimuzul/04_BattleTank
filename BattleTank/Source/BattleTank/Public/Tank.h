@@ -41,8 +41,8 @@ private:
 	// Sets default values for this pawn's properties
 	ATank();
 
-	//// Called when the game starts or when spawned
-	//virtual void BeginPlay() override;
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
 
 	//// Called to bind functionality to input
 	//virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
