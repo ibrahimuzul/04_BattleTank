@@ -2,13 +2,22 @@
 
 #include "TankPlayerController.h"
 #include "Tank.h"
-
+#include "TankAimingComponent.h"
 #include "BattleTank.h"
 
 
 void ATankPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
+	auto AimingComponent = GetControlledTank()->FindComponentByClass<UTankAimingComponent>();
+	if (AimingComponent)
+	{
+		FoundAimingComponent(AimingComponent);
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Player Controller cant find aiming component at Begin Play"));
+	}
 
 	//auto ControlledTank = GetControlledTank();
 	//if (!ControlledTank)
@@ -58,7 +67,7 @@ void ATankPlayerController::AimTowardsCrosshair()
 // Get world location  of linetrace through crosshair, true if hits landscape
 bool ATankPlayerController::GetSightRayHitLocation(FVector& HitLocation) const
 {
-	
+
 
 	//Find the crosshair position in pixel coordinates
 	int32 ViewportSizeX, ViewportSizeY;
