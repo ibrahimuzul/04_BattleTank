@@ -3,7 +3,7 @@
 #include "Tank.h"
 #include "TankBarrel.h"
 #include "Projectile.h"
-#include "TankAimingComponent.h"
+//#include "TankAimingComponent.h"
 //#include "TankMovementComponent.h"
 
 
@@ -28,19 +28,19 @@ void ATank::BeginPlay()
 	/*auto TankName = GetName();
 	UE_LOG(LogTemp, Warning, TEXT("%s DONKEY: Tank C++ Begin Play"), *TankName);*/
 
-	TankAimingComponent = FindComponentByClass<UTankAimingComponent>();
-	Barrel = FindComponentByClass<UTankBarrel>();
+	/*TankAimingComponent = FindComponentByClass<UTankAimingComponent>();*/
+	//Barrel = FindComponentByClass<UTankBarrel>();// Hoca henuz bu kodu yazmadi
 }
 
 
 
 
-void ATank::AimAt(FVector HitLocation)
-{
-	if (!ensure(TankAimingComponent)) { return; }
-	TankAimingComponent->AimAt(HitLocation, LaunchSpeed);
-
-}
+//void ATank::AimAt(FVector HitLocation)
+//{
+//	if (!ensure(TankAimingComponent)) { return; }
+//	TankAimingComponent->AimAt(HitLocation, LaunchSpeed);
+//
+//}
 
 void ATank::Fire()
 {

@@ -21,7 +21,7 @@ UTankAimingComponent::UTankAimingComponent()
 	// ...
 }
 
-void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
+void UTankAimingComponent::AimAt(FVector HitLocation)//, float LaunchSpeed)
 {
 
 	if (!ensure(Barrel)) { return; }
