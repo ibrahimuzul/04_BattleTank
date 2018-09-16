@@ -37,13 +37,29 @@ void UTankAimingComponent::BeginPlay()
 
 void UTankAimingComponent::TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction)
 {
-	if ((FPlatformTime::Seconds() - LastFireTime) > ReloadTimeInSeconds)
+	if ((FPlatformTime::Seconds() - LastFireTime) < ReloadTimeInSeconds)
 	{
 		FiringState = EFiringState::Reloading;
+	}
+	else if (IsBarrelMoving())
+	{
+		FiringState = EFiringState::Aiming;
+	}
+	else
+	{
+		FiringState = EFiringState::Locked;
 	}
 	// UE_LOG(LogTemp, Warning, TEXT("Aiming Comp. ticking"));
 
 	//TODO Handle aiming and locked states
+}
+
+bool UTankAimingComponent::IsBarrelMoving() {
+	if (!ensure(Barrel)) {
+		return false;
+	}
+	auto BarrelForward = Barrel->GetForwardVector();
+	return !BarrelForward.Equals(AimDirection, 0.01);//vector are equal
 }
 
 void UTankAimingComponent::AimAt(FVector HitLocation)//, float LaunchSpeed)
@@ -72,7 +88,7 @@ void UTankAimingComponent::AimAt(FVector HitLocation)//, float LaunchSpeed)
 	//Calculate the OutLunchVelocity
 	if (bHaveAimSolution)
 	{
-		auto AimDirection = OutLaunchVelocity.GetSafeNormal();
+		 AimDirection = OutLaunchVelocity.GetSafeNormal();
 		MoveBarrelTowards(AimDirection);
 	}
 	// if no solution found do nothing
