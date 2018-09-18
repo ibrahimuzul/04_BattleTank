@@ -12,13 +12,13 @@ UTankTrack::UTankTrack()
 void UTankTrack::BeginPlay()
 {
 	Super::BeginPlay();
-	UE_LOG(LogTemp, Warning, TEXT("BeginPlay"));
+	//UE_LOG(LogTemp, Warning, TEXT("BeginPlay"));
 	OnComponentHit.AddDynamic(this, &UTankTrack::OnHit);
 }
 
 void UTankTrack::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit)
 {
-	UE_LOG(LogTemp, Warning, TEXT("OnHit"));
+	//UE_LOG(LogTemp, Warning, TEXT("OnHit"));
 	//Drive the tracks
 	DriveTrack();
 	ApplySidewaysForce();
