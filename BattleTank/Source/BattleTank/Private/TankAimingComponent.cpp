@@ -54,12 +54,17 @@ void UTankAimingComponent::TickComponent(float DeltaTime, enum ELevelTick TickTy
 	//TODO Handle aiming and locked states
 }
 
+EFiringState UTankAimingComponent::GetFiringState() const
+{
+	return FiringState;
+}
+
 bool UTankAimingComponent::IsBarrelMoving() {
 	if (!ensure(Barrel)) {
 		return false;
 	}
 	auto BarrelForward = Barrel->GetForwardVector();
-	return !BarrelForward.Equals(AimDirection, 0.01);//vector are equal
+	return !BarrelForward.Equals(AimDirection, 0.05);//vector are equal
 }
 
 void UTankAimingComponent::AimAt(FVector HitLocation)//, float LaunchSpeed)
@@ -137,3 +142,5 @@ void UTankAimingComponent::Fire()
 		LastFireTime = FPlatformTime::Seconds();
 	}
 }
+
+
